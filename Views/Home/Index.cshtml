@@ -1,0 +1,371 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   @Styles.Render("~/bundles/mystyles")
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">School Management System</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="~/Account/LogOff">Logout</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="#">Logout</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <div class="Home">
+                <div class="row flex">
+
+                    <div class="col s6 valign-wrapper"><h4>List Of Students</h4></div>
+                    <div class="col s6  valign-wrapper right-align alignright">
+                        <a class="waves-effect waves-light btn alignright modal-trigger" href="#modal1" id="addBtn"><i class="material-icons left">cloud</i>Add Student</a>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <table id="myTable" class="table striped highlight">
+
+                    <thead>
+                        <tr>
+                           
+                            <th>Student Name</th>
+                            <th>Father Name</th>
+                            <th>Phone</th>
+                            <th>Father CNIC</th>
+                            <th>Address</th>
+                            <th>Class</th>
+                            <th>Action</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody class="tableBody">
+                        @*
+                        @foreach (var student in Model)
+                        {
+                            <tr>
+                                <td>@student.StudentId</td>
+                                <td>@student.Name</td>
+                                <td>@student.FullName</td>
+                                <td>@student.Phone</td>
+                                <td>@student.FatherCnic</td>
+                                <td>@student.Address</td>
+                                <td>@student.Class</td>
+
+                                <td>
+                                    <a href="~/Home/Student/@student.StudentId">View</a>
+                                    <a href="~/Home/Student/Edit/@student.StudentId">Edit</a>
+                                </td>
+                            </tr>
+                        }
+
+                        *@
+
+
+
+
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+        </div>
+
+        <!-- Modal Trigger -->
+        @*<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>*@
+
+        <!-- Modal Structure -->
+        
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal  modal-fixed-footer">
+            <div class="modal-content">
+                <h4>New Student</h4>
+                <div class="row">
+                    <form class="col s12" id="StudentForm">
+                        <div class="row">
+                            <p id="errors"></p>
+                            <div class="input-field col s6">
+                                <input id="StudentId" type="hidden" />
+                                <input id="Name" type="text" class="validate">
+                                <label for="Name">Full Name</label>
+                                <span class="helper-text" data-error="Name is Required" data-success="Correct">Name Field is Required</span>
+
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="FatherName" type="text" class="validate">
+                                <label for="FatherName">Father Name</label>
+                                <span class="helper-text" data-error="Name is Required" data-success="Correct">Name Field is Required</span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="input-field col s6">
+                                <input id="Phone" type="tel" class="validate">
+                                <label for="Phone">Phone</label>
+                                <span class="helper-text" data-error="Father Name is Required" data-success="Correct">Father Name Field is Required</span>
+
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="FatherCnic" type="text" class="validate">
+                                <label for="FatherCnic">Father Cnic</label>
+                                <span class="helper-text" data-error="Father Cnic is Required" data-success="Correct">Father Cnic Field is Required</span>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="input-field col s6">
+                                <input id="Address" type="text" class="validate">
+                                <label for="Address">Address</label>
+                                <span class="helper-text" data-error="Address is Required" data-success="Correct">Address Field is Required</span>
+
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="Class" type="text" class="validate">
+                                <label for="Class">Class</label>
+                                <span class="helper-text" data-error="Class is Required" data-success="Correct">Class Field is Required</span>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="Cancel" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+
+                <a href="#!" id="Add" class="modal-close waves-effect waves-green btn-flat">Save</a>
+            </div>
+        </div>
+
+
+
+    </div>
+            <!--JavaScript at end of body for optimized loading-->
+            @Scripts.Render("~/bundles/jquery")
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+            <script>
+
+                $(document).ready(function () {
+                    $('.modal').modal();
+
+                    
+               
+                });
+
+                 $('#Update').click(function () {
+                    var Name = $("#Name").val();
+                    var FatherName = $("#FatherName").val();
+                    var Phone = $("#Phone").val();
+                    var FatherCnic = $("#FatherCnic").val();
+                    var Address = $("#Address").val();
+                    var Class = $("#Class").val();
+                    var data = {
+                        Name: Name,
+                        FullName: FatherName,
+                        Phone: Phone,
+                        FatherCnic: FatherName,
+                        Address: Address,
+                        Class:Class
+                     }
+
+                     var StudenteditId = $("#StudentId").val();
+
+                    
+
+                     $.ajax({
+                      url: "@Url.Content("~/Student/Edit/")" + StudenteditId,
+                      method: "POST",
+                      contentType: "application/json",
+                      data: JSON.stringify(data), // issue with a property type in the data object
+                      dataType: "json",
+                      error: function (e) {
+                          console.log(e); // logging the error object to console
+                          $("#errors").html(e.responseJSON);
+                          $('#model1').modal('open');
+
+
+
+                       },
+                        success: function (result) {
+                         
+
+                            M.toast({ html: 'Student Added Successfully!' });
+                            $('#StudentForm')[0].reset();
+
+
+                        }
+                    });
+                     
+
+                });
+               
+
+                $('#Add').click(function () {
+
+                    var Name = $("#Name").val();
+                    var FatherName = $("#FatherName").val();
+                    var Phone = $("#Phone").val();
+                    var FatherCnic = $("#FatherCnic").val();
+                    var Address = $("#Address").val();
+                    var Class = $("#Class").val();
+                    var data = {
+                        Name: Name,
+                        FullName: FatherName,
+                        Phone: Phone,
+                        FatherCnic: FatherCnic,
+                        Address: Address,
+                        Class:Class
+                    }
+
+                    @*
+                    $.post("@Url.Action("Index","Student")", data, function (result) {
+
+
+                        console.log(data);
+                        
+                $('table tbody').append(
+                    '<tr>'+
+                    '<td>' + result.StudentId + '</td>' +
+                    '<td>' + result.Name+ '</td>' +
+                    '<td>' +result.FullName + '</td>' +
+                    '<td>' + result.Phone + '</td>' +
+                    '<td>' + result.FatherCnic + '</td>' +
+                    '<td>' + result.Address + '</td>' +
+                    '<td>' + result.Class+ '</td>' +
+                    '<td>View</td>'+
+                    '</tr >');
+
+                          M.toast({html: 'Student Added Successfully!'})
+
+                       
+                    });
+
+                        *@
+
+
+                    $.ajax({
+                      url: "@Url.Action("Index","Student")",
+                      method: "POST",
+                      contentType: "application/json",
+                      data: JSON.stringify(data), // issue with a property type in the data object
+                      dataType: "json",
+                      error: function (e) {
+                          console.log(e); // logging the error object to console
+                          $("#errors").html(e.responseJSON);
+                          $('#modal1').modal('open');
+
+
+
+                       },
+                        success: function (result) {
+
+                            
+                            $('table tbody').append(
+                                '<tr>' +
+                                '<td>' + result.Name + '</td>' +
+                                '<td>' + result.FullName + '</td>' +
+                                '<td>' + result.Phone + '</td>' +
+                                '<td>' + result.FatherCnic + '</td>' +
+                                '<td>' + result.Address + '</td>' +
+                                '<td>' + result.Class + '</td>' +
+                                '<td><a href="@Url.Content("~/Student/Details/")'+result.StudentId+'">' +"View" + '</a></td>' +
+                                '</tr >');
+                                
+
+                            M.toast({ html: 'Student Added Successfully!' });
+                            $('#StudentForm')[0].reset();
+
+
+                        }
+                    });
+                     
+
+                });
+
+                GetStudents();
+
+                function Open(studentid) {
+                    var id = studentid;
+                   
+
+                    
+                $.get('@Url.Content("~/Student/")'+id, function (data) {
+
+                    $('#StudentId').val(data.StudentId);
+                $("#Name").val(data.Name);
+                $("#FatherName").val(data.FullName);
+                $("#Phone").val(data.Phone);
+                $("#FatherCnic").val(data.FatherCnic);
+                $("#Address").val(data.Address);
+                       $("#Class").val(data.Class);
+
+                M.updateTextFields();
+                   
+                 
+            });
+                }
+
+                function GetStudents() {
+
+                    
+        $.get("@Url.Action("Index","Student")", function (data) {
+            console.log(data);
+            var students = data;
+
+            $.each(students, function (key, value) {
+                
+
+                $('table tbody').append(
+
+                    '<tr>'+
+                    '<td>' + value.Name+ '</td>' +
+                    '<td>' + value.FullName + '</td>' +
+                    '<td>' + value.Phone + '</td>' +
+                    '<td>' + value.FatherCnic + '</td>' +
+                    '<td>' + value.Address + '</td>' +
+                    '<td>' + value.Class+ '</td>' +
+                    '<td><a href="@Url.Content("~/Student/Details/")'+value.StudentId+'">' +"View" + '</a></td>' +
+                    '</tr>');
+
+            });
+
+        });
+                }
+            </script>
+</body>
+</html>
+

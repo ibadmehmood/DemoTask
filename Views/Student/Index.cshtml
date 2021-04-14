@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <datalist>List of Students</datalist>
+        <a href="~/Home/Create">Add Student</a>
+
+        <table id="myTable" class="display">
+            <thead>
+                <tr>
+                    <th>Student Id</th>
+                    <th>Student Name</th>
+                    <th>Father Name</th>
+                    <th>Phone</th>
+                    <th>Father CNIC</th>
+                    <th>Address</th>
+                    <th>Class</th>
+                    <th>Action</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @*
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>@student.StudentId</td>
+                        <td>@student.Name</td>
+                        <td>@student.FullName</td>
+                        <td>@student.Phone</td>
+                        <td>@student.FatherCnic</td>
+                        <td>@student.Address</td>
+                        <td>@student.Class</td>
+
+                        <td>
+                            <a href="~/Home/Student/@student.StudentId">View</a>
+                            <a href="~/Home/Student/Edit/@student.StudentId">Edit</a>
+                        </td>
+                    </tr>
+                }
+                    *@
+
+
+
+
+
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <script></script
+</body>
+</html>

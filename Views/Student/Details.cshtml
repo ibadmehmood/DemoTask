@@ -1,0 +1,367 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    @Styles.Render("~/bundles/mystyles")
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">School Management System</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="~/Account/LogOff">Logout</a></li>
+
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="~/Account/LogOff">Logout</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <div class="Home">
+
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+
+                            <div class="input-field col s4">
+                                <input id="Name" type="text" disabled class="validate">
+                                <label for="Name" class="active">First</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <input id="FatherName" type="text" disabled class="validate">
+                                <label for="FatherName" class="active">Father Name</label>
+                            </div>
+
+
+
+                            <div class="input-field col s4">
+                                <input id="Phone" type="tel" disabled class="validate">
+                                <label for="Phone" class="active">Phone</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s4">
+                                <input id="FatherCnic" type="text" disabled class="validate">
+                                <label for="FatherCnic" class="active">Father Cnic</label>
+                            </div>
+
+
+
+
+                            <div class="input-field col s4">
+                                <input id="Address" type="text" disabled class="validate">
+                                <label for="Address" class="active">Address</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <input id="Class" type="text" disabled class="validate">
+                                <label for="Class" class="active">Class</label>
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+                </div>
+
+
+
+                <div class="row flex">
+
+                    <div class="col s6 valign-wrapper"><h4>Student's Qualification </h4></div>
+                    <div class="col s6  valign-wrapper right-align alignright">
+                        <a class="waves-effect waves-light btn alignright modal-trigger" href="#modal2"><i class="material-icons left">cloud</i>Add Qualification</a>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <table id="myTable" class="table striped highlight">
+
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th>Total Marks</th>
+                            <th>Obtain Marks</th>
+                            <th>Percentage</th>
+                            <th>Grade</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody class="tableBody">
+                        @*
+                        @foreach (var student in Model)
+                        {
+                            <tr>
+                                <td>@student.StudentId</td>
+                                <td>@student.Name</td>
+                                <td>@student.FullName</td>
+                                <td>@student.Phone</td>
+                                <td>@student.FatherCnic</td>
+                                <td>@student.Address</td>
+                                <td>@student.Class</td>
+
+                                <td>
+                                    <a href="~/Home/Student/@student.StudentId">View</a>
+                                    <a href="~/Home/Student/Edit/@student.StudentId">Edit</a>
+                                </td>
+                            </tr>
+                        }
+
+                        *@
+
+
+
+
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+        </div>
+
+        <!-- Modal Trigger -->
+        @*<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>*@
+
+        <!-- Modal Structure -->
+        <!-- Modal Structure -->
+        <div id="modal2" class="modal  modal-fixed-footer">
+            <div class="modal-content">
+                <h4>New Qualification</h4>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <p id="errors"></p>
+                            <div class="input-field col s6">
+                                <input id="Degree" type="text" class="validate">
+                                <label for="Degree">Degree</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="TotalMarks" type="text" class="validate">
+                                <label for="TotalMarks">TotalMarks</label>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="input-field col s4">
+                                <input id="ObtainMarks" type="tel" class="validate">
+                                <label for="ObtainMarks">ObtainMarks</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <input id="Percentage" type="text" class="validate">
+                                <label for="Percentage">Percentage</label>
+                            </div>
+                        
+
+                            <div class="input-field col s4">
+                                <input id="Grade" type="text" class="validate">
+                                <label for="Grade">Grade</label>
+                            </div>
+                           
+                        </div>
+
+
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="Cancel" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+
+                <a href="#!" id="Add" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    @Scripts.Render("~/bundles/jquery")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <script>
+
+                $(document).ready(function(){
+                    $('.modal').modal();
+                   
+                   $.get('@Url.Content("~/Student/"+@ViewBag.studentid)', function (data) {
+
+
+                $("#Name").val(data.Name);
+                $("#FatherName").val(data.FullName);
+                $("#Phone").val(data.Phone);
+                $("#FatherCnic").val(data.FatherCnic);
+                $("#Address").val(data.Address);
+                       $("#Class").val(data.Class);
+
+                        M.updateTextFields();
+                   
+                 
+            });
+                    
+
+
+
+                });
+
+                $('#Add').click(function () {
+                    var Degree = $("#Degree").val();
+                    var TotalMarks = $("#TotalMarks").val();
+                    var ObtainMarks = $("#ObtainMarks").val();
+                    var Percentage = $("#Percentage").val();
+                    var Grade = $("#Grade").val();
+                   
+                    var data = {
+                        Degree: Degree,
+                        TotalMarks: TotalMarks,
+                        ObtainMarks: ObtainMarks,
+                        Percentage: Percentage,
+                        Grade: Grade
+                    }
+
+                    @*
+
+                    $.post('@Url.Content("~/Student/"+@ViewBag.studentid+"/Qualification")', data, function (result) {
+
+
+                        console.log(data);
+
+                $('table tbody').append(
+                    '<tr>' +
+                    '<td>' + result.QualificationId + '</td>' +
+                    '<td>' + result.Degree + '</td>' +
+                    '<td>' + result.TotalMarks + '</td>' +
+                    '<td>' + result.ObtainMarks + '</td>' +
+                    '<td>' + result.Percentage + '</td>' +
+                    '<td>' + result.Grade + '</td>' +
+                
+                    '<td>View</td>'+
+                    '</tr >');
+
+                    });
+                        *@
+
+                     $.ajax({
+                      url:'@Url.Content("~/Student/"+@ViewBag.studentid+"/Qualification")',
+                      method: "POST",
+                      contentType: "application/json",
+                      data: JSON.stringify(data), // issue with a property type in the data object
+                      dataType: "json",
+                      error: function (e) {
+                          console.log(e); // logging the error object to console
+                          $("#errors").html(e.responseJSON);
+                          $('#modal2').modal('open');
+                          $('#model2')[0].reset();
+
+
+                       },
+                        success: function (result) {
+                            
+                $('table tbody').append(
+                    '<tr>' +
+                    '<td>' + result.Degree + '</td>' +
+                    '<td>' + result.TotalMarks + '</td>' +
+                    '<td>' + result.ObtainMarks + '</td>' +
+                    '<td>' + result.Percentage + '</td>' +
+                    '<td>' + result.Grade + '</td>' +
+                    '<td>'+'<Button  onclick=DeleteQualification('+result.QualificationId+')'+ '>Delete</Button>'+'</td>'+
+
+                    '</tr >');
+
+                            M.toast({ html: 'Qualification Added Successfully!' })
+
+                        }
+                    });
+                    
+
+
+
+
+
+                });
+
+        getQualifications();
+
+
+        function getQualifications() {
+              $.get('@Url.Content("~/Student/"+@ViewBag.studentid+"/Qualification")', function (data) {
+            console.log(data);
+            var students = data;
+
+            $.each(students, function (key, value) {
+
+
+                $('table tbody').append(
+
+                    '<tr id='+value.QualificationId+'>'+
+                    '<td>' + value. Degree+ '</td>' +
+                    '<td>' + value.TotalMarks + '</td>' +
+                    '<td>' + value.ObtainMarks + '</td>' +
+                    '<td>' + value.Percentage + '</td>' +
+                    '<td>' + value.Grade + '</td>' +
+                    '<td>'+'<Button  onclick=DeleteQualification('+value.QualificationId+')'+ '>Delete</Button>'+'</td>'+
+                    '</tr >');
+
+            });
+
+
+
+        });
+        }
+
+        function DeleteIt() {
+            $("t")
+        }
+
+        function DeleteQualification(id) {
+
+              $.ajax({
+                      url:'@Url.Content("~/Student/"+@ViewBag.studentid+"/Qualification/")'+id,
+                      method: "POST",
+                      contentType: "application/json",
+                      dataType: "json",
+                      error: function (e) {
+                          console.log(e); // logging the error object to console
+                         M.toast({ html: 'Qualification Could not be Deleted!' })
+
+
+
+                       },
+                        success: function (result) {
+
+                            $("table#myTable tr#"+id).remove();
+
+                
+
+                            M.toast({ html: 'Qualification Deleted Successfully!' })
+
+                        }
+                    });
+        }
+    </script>
+</body>
+</html>
+

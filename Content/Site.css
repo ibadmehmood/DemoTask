@@ -1,0 +1,11 @@
+﻿.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.alignright{
+    float:right;
+    text-align:right;
+}
+#errors{
+    color:darkred;
+}
